@@ -4,15 +4,15 @@ Este projeto foi desenvolvido como parte do **Lab: Previsão de Estoque Intelige
 
 O objetivo foi criar um modelo de Machine Learning *no-code* capaz de prever a demanda de produtos, considerando fatores complexos como **feriados nacionais, promoções e sazonalidade de estoque**.
 
-## 🚀 Diferenciais do Projeto
+## 🚀 Diferenciais do Projeto: Engenharia de Dados
 
-Ao invés de utilizar um dataset estático simples, optei por **desenvolver um script em Python** para gerar um dataset sintético robusto (~7.000 linhas), simulando um cenário real de varejo brasileiro com as seguintes lógicas de negócio:
+Ao invés de utilizar um dataset estático simples, optei por **desenvolver um script em Python** para gerar um dataset sintético robusto, simulando um cenário real de varejo brasileiro com as seguintes lógicas de negócio:
 
 * **Sazonalidade de Feriados:** O script utiliza a biblioteca `holidays` para mapear feriados no Brasil.
 * **Comportamento do Consumidor:**
     * **Feriados Prolongados (Seg/Sex):** Queda nas vendas no dia do feriado, mas pico de vendas nos dias que antecedem.
     * **Feriados "Meio de Semana":** Leve aumento nas vendas (efeito folga curta).
-* **Promoções:** Impacto direto na elasticidade do preço (preço cai 15% -> vendas sobem até 2.5x).
+* **Promoções:** Impacto direto na elasticidade do preço (preço cai 15% -> vendas sobem significativamente).
 
 ## 🛠 Tecnologias Utilizadas
 
@@ -33,12 +33,12 @@ O dataset gerado possui as seguintes colunas (features):
 | `QUANTIDADE_ESTOQUE` | Numérico | Nível de inventário disponível. |
 | `QUANTIDADE_VENDIDA` | Numérico | **Variável Alvo (Target)**. Quanto foi vendido. |
 
-> *Nota: Tive o cuidado de converter os IDs para String (`P-101`) para garantir a compatibilidade correta com o SageMaker Canvas.*
+> *Nota: Realizei o tratamento dos IDs para o formato String (`P-101`) para garantir a compatibilidade correta com o SageMaker Canvas.*
 
 ## 🧠 Construção do Modelo (Passo a Passo)
 
 ### 1. Geração dos Dados
-Utilizei um script Python (disponível na pasta `/src` deste repositório) para criar 10 produtos fictícios com histórico de vendas de 2023 a 2024.
+Utilizei o script `gerar_dataset.py` (disponível na pasta `/src` deste repositório) para criar simulações de vendas de 2023 a 2024.
 
 ### 2. Configuração no SageMaker Canvas
 * **Dataset Importado:** `dataset_estoque_v3.csv`
@@ -48,25 +48,30 @@ Utilizei um script Python (disponível na pasta `/src` deste repositório) para 
 * **Configuração de Feriados:** Ativei a opção **"Holiday Schedule"** para o **Brasil**. Isso permitiu que o AWS SageMaker cruzasse meus dados com o calendário nacional automaticamente.
 
 ### 3. Análise dos Resultados
-Após o treinamento (Standard Build), o modelo apresentou métricas interessantes:
+O modelo treinado apresentou as seguintes métricas de performance:
 
 * **Avg. wQL:** 0.417
 * **MAPE:** 1.452
-* **MASE:** 0.860 (Indica que o modelo é capaz de fazer previsões melhores que uma média simples).
+* **MASE:** 0.860 (Indica que o modelo faz previsões melhores que uma média simples).
+* **RMSE:** 4.740
 
 #### Impacto das Variáveis
-O gráfico de impacto das colunas revelou que a estratégia de dados funcionou perfeitamente:
+O SageMaker identificou quais fatores mais influenciaram a previsão de estoque:
 
-![Impacto das Colunas](caminho/para/seu/print_impacto.png)
-*(Substitua isso pela sua imagem do Column Impact)*
+![Impacto das Colunas](img/column_impact.png)
+*(Gráfico gerado pelo SageMaker Canvas)*
 
-* **`Holiday_BR` (47.25%):** O modelo identificou que os **feriados brasileiros** são o fator mais determinante para a variação de vendas, validando a lógica implementada no script Python.
-* **`PRECO` (19.76%):** O segundo maior fator, confirmando a sensibilidade a preços e promoções.
+* **`Holiday_BR` (47.25%):** O modelo validou a hipótese de negócio, identificando que os **feriados brasileiros** são o fator mais determinante para a variação de vendas.
+* **`PRECO` (19.76%):** Segundo maior fator, confirmando a sensibilidade do cliente a preços e promoções.
+* **`QUANTIDADE_ESTOQUE` (14.69%):** A disponibilidade do produto também afetou o volume de vendas.
 
 ## 📈 Conclusões
 
-Este projeto demonstrou como a qualidade dos dados (Data Engineering) impacta diretamente no sucesso de um modelo de Machine Learning. Ao criar variáveis explicativas ricas (como flags de promoção e comportamento de feriado), o SageMaker Canvas conseguiu atingir uma alta assertividade sem que fosse necessário escrever código complexo de modelagem.
+Este projeto demonstrou como a qualidade dos dados (Data Engineering) impacta diretamente no sucesso de um modelo de Machine Learning. Ao criar variáveis explicativas ricas (como flags de promoção e comportamento de feriado), o SageMaker Canvas conseguiu atingir uma alta assertividade e capturar padrões sazonais complexos sem a necessidade de codificação manual do algoritmo.
 
 ---
 ### 🔗 Links Úteis
 * [Documentação do AWS SageMaker Canvas](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas.html)
+
+---
+*Projeto desenvolvido por [Seu Nome]*
