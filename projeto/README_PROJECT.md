@@ -82,13 +82,11 @@ Abaixo, vemos a projeção de vendas. As linhas coloridas representam os cenári
 
 ![Gráfico de Previsão](img/grafico_previsao_futura.png)
 
+<img width="1801" height="515" alt="single_prediction_results (2)" src="https://github.com/user-attachments/assets/4e42630c-85ce-4afd-b86c-a1da22671bfe" />
+
+<img width="1801" height="515" alt="single_prediction_results (1)" src="https://github.com/user-attachments/assets/19168d85-9387-4f5e-a17b-128a88675353" />
+
 * **Linha Verde (P50):** O cenário mais provável de vendas.
 * **Linha Amarela (P90):** Cenário otimista (preparação para alta demanda).
 * **Linha Rosa (P10):** Cenário pessimista (demanda mínima esperada).
-
-### 💾 Dados Brutos
-Caso queira explorar os dados gerados pelo modelo, o arquivo CSV completo está disponível:
-<img width="1801" height="515" alt="single_prediction_results (2)" src="https://github.com/user-attachments/assets/4e42630c-85ce-4afd-b86c-a1da22671bfe" />
-<img width="1801" height="515" alt="single_prediction_results (1)" src="https://github.com/user-attachments/assets/19168d85-9387-4f5e-a17b-128a88675353" />
-
 
