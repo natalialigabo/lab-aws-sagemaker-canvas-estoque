@@ -1,6 +1,6 @@
 # 📊 Previsão de Estoque Inteligente na AWS com SageMaker Canvas
 
-Este projeto foi desenvolvido como parte do **Lab: Previsão de Estoque Inteligente na AWS com SageMaker Canvas** da **DIO (Digital Innovation One)**. 
+Este projeto foi desenvolvido como parte do **Lab: Previsão de Estoque Inteligente na AWS com SageMaker Canvas** da **DIO (Digital Innovation One)**.
 
 O objetivo foi criar um modelo de Machine Learning *no-code* capaz de prever a demanda de produtos, considerando fatores complexos como **feriados nacionais, promoções e sazonalidade de estoque**.
 
@@ -65,14 +65,6 @@ O SageMaker identificou quais fatores mais influenciaram a previsão de estoque:
 * **`PRECO` (19.76%):** Segundo maior fator, confirmando a sensibilidade do cliente a preços e promoções.
 * **`QUANTIDADE_ESTOQUE` (14.69%):** A disponibilidade do produto também afetou o volume de vendas.
 
-## 📈 Conclusões
-
-Este projeto demonstrou como a qualidade dos dados (Data Engineering) impacta diretamente no sucesso de um modelo de Machine Learning. Ao criar variáveis explicativas ricas (como flags de promoção e comportamento de feriado), o SageMaker Canvas conseguiu atingir uma alta assertividade e capturar padrões sazonais complexos sem a necessidade de codificação manual do algoritmo.
-
----
-### 🔗 Links Úteis
-* [Documentação do AWS SageMaker Canvas](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas.html)
-
 ## 📊 Resultados e Previsões
 
 O modelo gerou previsões para os próximos dias, permitindo um planejamento de estoque mais assertivo.
@@ -82,11 +74,18 @@ Abaixo, vemos a projeção de vendas. As linhas coloridas representam os cenári
 
 ![Gráfico de Previsão](img/grafico_previsao_futura.png)
 
-<img width="1801" height="515" alt="single_prediction_results (2)" src="https://github.com/user-attachments/assets/4e42630c-85ce-4afd-b86c-a1da22671bfe" />
-
-<img width="1801" height="515" alt="single_prediction_results (1)" src="https://github.com/user-attachments/assets/19168d85-9387-4f5e-a17b-128a88675353" />
-
 * **Linha Verde (P50):** O cenário mais provável de vendas.
 * **Linha Amarela (P90):** Cenário otimista (preparação para alta demanda).
 * **Linha Rosa (P10):** Cenário pessimista (demanda mínima esperada).
 
+## 📈 Conclusões
+
+Este projeto demonstrou como a qualidade dos dados (Data Engineering) impacta diretamente no sucesso de um modelo de Machine Learning. Ao criar variáveis explicativas ricas (como flags de promoção e comportamento de feriado), o SageMaker Canvas conseguiu atingir uma alta assertividade e capturar padrões sazonais complexos sem a necessidade de codificação manual do algoritmo.
+
+---
+### 🔗 Links Úteis
+* [Documentação do AWS SageMaker Canvas](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas.html)
+* [Laboratório da DIO](https://web.dio.me/lab/previsao-de-estoque-inteligente-na-aws-com-sagemaker-canvas)
+
+---
+*Projeto desenvolvido por Natália Santos*
