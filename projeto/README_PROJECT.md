@@ -73,5 +73,22 @@ Este projeto demonstrou como a qualidade dos dados (Data Engineering) impacta di
 ### 🔗 Links Úteis
 * [Documentação do AWS SageMaker Canvas](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas.html)
 
----
-*Projeto desenvolvido por [Seu Nome]*
+## 📊 Resultados e Previsões
+
+O modelo gerou previsões para os próximos dias, permitindo um planejamento de estoque mais assertivo.
+
+### Gráfico de Previsão (Item 105)
+Abaixo, vemos a projeção de vendas. As linhas coloridas representam os cenários de incerteza (P10, P50, P90):
+
+![Gráfico de Previsão](img/grafico_previsao_futura.png)
+
+* **Linha Verde (P50):** O cenário mais provável de vendas.
+* **Linha Amarela (P90):** Cenário otimista (preparação para alta demanda).
+* **Linha Rosa (P10):** Cenário pessimista (demanda mínima esperada).
+
+### 💾 Dados Brutos
+Caso queira explorar os dados gerados pelo modelo, o arquivo CSV completo está disponível:
+<img width="1801" height="515" alt="single_prediction_results (2)" src="https://github.com/user-attachments/assets/4e42630c-85ce-4afd-b86c-a1da22671bfe" />
+<img width="1801" height="515" alt="single_prediction_results (1)" src="https://github.com/user-attachments/assets/19168d85-9387-4f5e-a17b-128a88675353" />
+
+
